@@ -1,6 +1,6 @@
 import express from "express";
-import { refreshCookie, scrapperADV } from "./script.js";
-import { cookieModel, trendsModel } from "./models.js";
+import { refreshCookie, scrapperADV } from "./scripts/script.js";
+import { cookieModel, trendsModel } from "./models/models.js";
 
 const app = express();
 
