@@ -18,7 +18,7 @@ export async function scrapperADV(loginCookie) {
       "AppleWebKit/537.36 (KHTML, like Gecko) " +
       "Chrome/116.0.0.0 Safari/537.36"
   );
-  options.addArguments("--proxy-server=http://us-ca.proxymesh.com:31280");
+  // options.addArguments("--proxy-server=http://us-ca.proxymesh.com:31280");
 
   console.log("Launching Chrome in headless mode...");
 
