@@ -1,0 +1,5 @@
+.env
+.gitignore
+node_modules/
+tor/
+docker-compose.yaml
