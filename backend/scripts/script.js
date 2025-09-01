@@ -5,12 +5,13 @@ import { newTorIdentity } from "../utils/util.js";
 
 export async function scrapperADV(loginCookie) {
   let options = new chrome.Options();
+  //---------------------------------------- Best ones yet ----------------------------------------------
   options.addArguments("--headless=new");
-  options.addArguments("--window-size=1920,1080");
+  options.addArguments("--window-size=800,600");
   options.addArguments("--disable-gpu");
   options.addArguments("--no-sandbox");
   options.addArguments("--disable-dev-shm-usage");
-  options.addArguments("--proxy-server=socks5://127.0.0.1:9050"); //use this if using TOR
+  options.addArguments("--proxy-server=socks5://127.0.0.1:9050");
   options.addArguments("--disable-blink-features=AutomationControlled");
   options.addArguments("--disable-infobars");
   options.addArguments(
@@ -18,8 +19,32 @@ export async function scrapperADV(loginCookie) {
       "AppleWebKit/537.36 (KHTML, like Gecko) " +
       "Chrome/116.0.0.0 Safari/537.36"
   );
-  //if using proxymesh you'll have to whitelist the ip after logging into your account
+  // Memory optimization
+  options.addArguments("--memory-pressure-off");
+  options.addArguments("--disable-background-timer-throttling");
+  options.addArguments("--disable-renderer-backgrounding");
+  options.addArguments("--disable-backgrounding-occluded-windows");
+  options.addArguments("--disable-extensions");
+  options.addArguments("--disable-plugins");
+  options.addArguments("--disable-default-apps");
+  options.addArguments("--disable-sync");
+  options.addArguments("--disable-translate");
+  options.addArguments("--mute-audio");
+  options.addArguments("--disable-logging");
+  options.addArguments("--disk-cache-size=0");
+  options.addArguments("--media-cache-size=0");
+
+  // Block images using Chrome preferences
+  options.setUserPreferences({
+    "profile.default_content_setting_values.images": 2,
+    "profile.default_content_settings.popups": 0,
+    "profile.managed_default_content_settings.images": 2,
+  });
+
+  // if using proxymesh you'll have to whitelist the ip after logging into your account
   // options.addArguments("--proxy-server=http://us-ca.proxymesh.com:31280"); if using proxymesh (free tier gets exhausted quickly)
+
+  //---------------------------------------- Best ones yet ----------------------------------------------
 
   console.log("Launching Chrome in headless mode...");
 
