@@ -1,7 +1,7 @@
 import { Builder, until, Key, By } from "selenium-webdriver";
 import chrome from "selenium-webdriver/chrome.js";
 import "dotenv/config";
-// import { newTorIdentity } from "./util.js";
+import { newTorIdentity } from "../utils/util.js";
 
 export async function scrapperADV(loginCookie) {
   let options = new chrome.Options();
@@ -10,7 +10,7 @@ export async function scrapperADV(loginCookie) {
   options.addArguments("--disable-gpu");
   options.addArguments("--no-sandbox");
   options.addArguments("--disable-dev-shm-usage");
-  // options.addArguments("--proxy-server=socks5://127.0.0.1:9050"); use this if using TOR
+  options.addArguments("--proxy-server=socks5://127.0.0.1:9050"); //use this if using TOR
   options.addArguments("--disable-blink-features=AutomationControlled");
   options.addArguments("--disable-infobars");
   options.addArguments(
@@ -18,7 +18,8 @@ export async function scrapperADV(loginCookie) {
       "AppleWebKit/537.36 (KHTML, like Gecko) " +
       "Chrome/116.0.0.0 Safari/537.36"
   );
-  // options.addArguments("--proxy-server=http://us-ca.proxymesh.com:31280");
+  //if using proxymesh you'll have to whitelist the ip after logging into your account
+  // options.addArguments("--proxy-server=http://us-ca.proxymesh.com:31280"); if using proxymesh (free tier gets exhausted quickly)
 
   console.log("Launching Chrome in headless mode...");
 
@@ -30,8 +31,8 @@ export async function scrapperADV(loginCookie) {
 
   try {
     //if using TOR
-    // await newTorIdentity();
-    // console.log("New Tor IP requested");
+    await newTorIdentity();
+    console.log("New Tor IP requested");
 
     console.log("[STEP] Opening X.com...");
     await driver.get("https://www.x.com");

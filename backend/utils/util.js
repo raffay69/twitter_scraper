@@ -2,7 +2,7 @@ import TorControl from "tor-control";
 import "dotenv/config";
 
 const tor = new TorControl({
-  host: "0.0.0.0",
+  host: "127.0.0.1",
   port: 9051,
   password: process.env.TOR_PASSWORD,
 });
