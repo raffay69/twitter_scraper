@@ -1,5 +1,5 @@
-SocksPort 0.0.0.0:9050
-ControlPort 0.0.0.0:9051
+SocksPort 127.0.0.1:9050
+ControlPort 127.0.0.1:9051
 # Here you'll have to hash the TOR_PASSWORD and use it here 
 # In the Exec section of the container in Docker-Desktop run -> tor --hash-password <your_password> -> this will give you the hash , replace it 
 HashedControlPassword 16:D302F3AC35891B7560E3FE602579B5AFF6B81CBEB949557D87F4B2588F

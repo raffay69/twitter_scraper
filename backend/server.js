@@ -1,11 +1,14 @@
 import express from "express";
 import { refreshCookie, scrapperADV } from "./scripts/script.js";
 import { cookieModel, trendsModel } from "./models/models.js";
+import "dotenv/config";
 
 const app = express();
 
 app.use(express.json());
-app.listen(4000, () => {
+
+const PORT = process.env.PORT || 4000;
+app.listen(PORT, () => {
   console.log("running on 4000");
 });
 
