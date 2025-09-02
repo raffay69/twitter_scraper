@@ -65,9 +65,7 @@ const InfoPanel: React.FC<InfoPanelProps> = ({ ipAddress, date }) => {
         <div className="flex items-center mt-2 space-x-3">
           <Clock className="w-5 h-5 text-gray-400" />
           <div>
-            <div className="text-gray-400 text-sm font-medium">
-              Last Updated
-            </div>
+            <div className="text-gray-400 text-sm font-medium">Fetched On</div>
 
             <div className="text-white text-lg">{formatDate(date)}</div>
           </div>

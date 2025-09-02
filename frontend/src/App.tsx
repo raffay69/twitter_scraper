@@ -66,38 +66,36 @@ function App() {
   return (
     <div className="min-h-screen bg-black text-white flex">
       <ToastContainer />
-      <div className="fixed left-0 top-0 h-screen w-64 bg-black border-r border-gray-800">
+      <div className="hidden md:block fixed left-0 top-0 h-screen w-64 bg-black border-r border-gray-800">
         <DefaultSidebar
           onSelectItem={handleSelectHistoryItem}
           trigger={trigger}
         />
       </div>
 
-      {/* Main area */}
-      <div className="flex-1 ml-55 flex flex-col">
-        {/* Header */}
+      <div className="flex-1 md:ml-64 flex flex-col w-full">
         <div>
-          <div className="max-w-4xl mx-auto px-6 py-6">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 py-6">
             <div className="flex items-center space-x-3">
-              <Search className="w-8 h-8 text-white" />
-              <h1 className="text-2xl font-bold">X Trends Scraper</h1>
+              <Search className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
+              <h1 className="text-xl sm:text-2xl font-bold">
+                X Trends Scraper
+              </h1>
             </div>
-            <p className="text-gray-400 mt-2">
+            <p className="text-gray-400 mt-2 text-sm sm:text-base">
               Discover what's trending on X right now across the world
             </p>
           </div>
         </div>
 
-        {/* Main Content */}
-        <div className="max-w-4xl mx-auto px-6 py-8 flex-1">
-          {/* Start Button */}
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8 flex-1 w-full">
           {!state.data && !state.isLoading && (
             <div className="flex items-center justify-center min-h-[60vh] animate-fadeIn">
               <div className="text-center">
                 <button
                   onClick={handleStartScraping}
                   disabled={state.isLoading}
-                  className="bg-white hover:bg-gray-100 text-black font-bold py-4 px-8 rounded-full text-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-white focus:ring-opacity-20 shadow-lg"
+                  className="bg-white hover:bg-gray-100 text-black font-bold py-3 px-6 text-base sm:py-4 sm:px-8 sm:text-lg rounded-full transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-white focus:ring-opacity-20 shadow-lg"
                 >
                   Start Scraping
                 </button>
@@ -114,14 +112,12 @@ function App() {
             </div>
           )}
 
-          {/* Loading State */}
           {state.isLoading && (
             <div className="flex justify-center animate-fadeIn">
               <LoadingSpinner />
             </div>
           )}
 
-          {/* Results */}
           {state.data && !state.isLoading && (
             <div className="animate-slideUp">
               <TrendsList
@@ -135,13 +131,12 @@ function App() {
                 date={state.data.date! || state.data.DateandTime!}
               />
 
-              {/* Action Button */}
               <div className="text-center mt-8">
                 <button
                   onClick={handleStartScraping}
                   className="bg-gray-900 hover:bg-gray-800 text-white font-medium py-3 px-6 rounded-full border border-gray-800 hover:border-gray-700 transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-20"
                 >
-                  Refresh Trends
+                  Scrape Again
                 </button>
               </div>
             </div>
@@ -149,35 +144,34 @@ function App() {
         </div>
       </div>
 
-      {/* Profile Card - Bottom Right */}
-      <div className="fixed bottom-6 right-6 z-10">
-        <div className="bg-gray-900/90 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 hover:bg-gray-800/90 hover:border-gray-600/50 transition-all duration-300 transform hover:scale-[1.02] hover:-translate-y-1 shadow-2xl">
-          <div className="flex items-center space-x-3 mb-4">
+      <div className="absolute top-2 right-2 md:bottom-3 md:right-3 z-10">
+        <div className="bg-gray-900/90 backdrop-blur-sm border border-gray-700/50 rounded-lg p-2 md:p-3 hover:bg-gray-800/90 hover:border-gray-600/50 transition-all duration-300 transform hover:scale-[1.005] hover:-translate-y-0.5 shadow-lg">
+          <div className="flex items-center space-x-1.5 mb-1.5">
             <div>
-              <div className="text-gray-400 text-xs font-medium uppercase tracking-wide">
+              <div className="text-gray-400 text-[9px] font-medium uppercase tracking-wide">
                 Created by
               </div>
-              <div className="text-white font-semibold text-lg">
+              <div className="text-white font-semibold text-xs md:text-sm">
                 Mohammed Abdul Raffay
               </div>
             </div>
           </div>
-          <div className="flex space-x-2">
+          <div className="flex space-x-1.5">
             <a
               href="https://github.com/raffay69/sixth_sense_assignment"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 flex items-center justify-center p-3 bg-gray-800/50 hover:bg-gray-700/70 rounded-xl transition-all duration-200 group border border-gray-700/30 hover:border-gray-600/50"
+              className="flex-1 flex items-center justify-center p-1.5 bg-gray-800/50 hover:bg-gray-700/70 rounded-md transition-all duration-200 group border border-gray-700/30 hover:border-gray-600/50"
             >
-              <Github className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors duration-200" />
+              <Github className="w-3.5 h-3.5 text-gray-400 group-hover:text-white transition-colors duration-200" />
             </a>
             <a
               href="https://www.linkedin.com/in/mohammed-abdul-raffay-28a608308/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 flex items-center justify-center p-3 bg-gray-800/50 hover:bg-gray-700/70 rounded-xl transition-all duration-200 group border border-gray-700/30 hover:border-gray-600/50"
+              className="flex-1 flex items-center justify-center p-1.5 bg-gray-800/50 hover:bg-gray-700/70 rounded-md transition-all duration-200 group border border-gray-700/30 hover:border-gray-600/50"
             >
-              <Linkedin className="w-5 h-5 text-gray-400 group-hover:text-blue-400 transition-colors duration-200" />
+              <Linkedin className="w-3.5 h-3.5 text-gray-400 group-hover:text-blue-400 transition-colors duration-200" />
             </a>
           </div>
         </div>
