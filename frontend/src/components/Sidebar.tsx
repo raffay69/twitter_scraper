@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Card, Typography, List, ListItem } from "@material-tailwind/react";
 import axios from "axios";
+import { Trash2 } from "lucide-react";
+import { toast } from "react-toastify";
 
 interface DefaultSidebarProps {
   onSelectItem: React.Dispatch<React.SetStateAction<any>>;
@@ -45,13 +47,32 @@ export const DefaultSidebar: React.FC<DefaultSidebarProps> = ({
     onSelectItem(item);
   };
 
+  async function handleDelete(id: string) {
+    try {
+      const res = await axios.delete(
+        `https://sixth-sense-assignment.onrender.com/recent?id=${id}`
+      );
+      if (res.status === 200)
+        toast.success("Deleted successfully", {
+          theme: "dark",
+          autoClose: 1000,
+        });
+      fetchRecents();
+    } catch (e) {
+      toast.error("Error deleting recent", {
+        theme: "dark",
+        autoClose: 1000,
+      });
+    }
+  }
+
   return (
     <Card
       {...(undefined as any)}
-      className="h-screen w-64 bg-black text-white shadow-lg border-r border-gray-800 "
+      className="h-screen w-[310px] bg-black text-white shadow-lg border-r border-gray-800 "
     >
-      <div className="mb-6 ml-6 mt-8 p-4">
-        <Typography {...(undefined as any)} variant="h3" className="text-white">
+      <div className="mb-1 ml-6 mt-2 p-4">
+        <Typography {...(undefined as any)} variant="h2" className="text-white">
           Recents
         </Typography>
       </div>
@@ -60,7 +81,7 @@ export const DefaultSidebar: React.FC<DefaultSidebarProps> = ({
           data.map((el: any) => (
             <List
               onClick={() => handleItemClick(el)}
-              className="space-y-2 text-gray-200"
+              className="space-y-2 text-gray-200 w-[300px]"
               {...(undefined as any)}
             >
               <ListItem
@@ -71,6 +92,15 @@ export const DefaultSidebar: React.FC<DefaultSidebarProps> = ({
                 <span className="text-xs text-gray-400">
                   {formatDate(el.DateandTime)}
                 </span>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleDelete(el._id);
+                  }}
+                  className="p-1 rounded-full hover:bg-red-600 transition"
+                >
+                  <Trash2 size={16} className="text-red-400 hover:text-white" />
+                </button>
               </ListItem>
             </List>
           ))

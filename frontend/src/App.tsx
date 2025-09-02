@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { Search, AlertCircle, Github, Linkedin } from "lucide-react";
+import { Search, Github, Linkedin } from "lucide-react";
 import axios from "axios";
 import LoadingSpinner from "./components/LoadingSpinner";
 import TrendsList from "./components/TrendsList";
 import InfoPanel from "./components/InfoPanel";
 import { AppState, ScrapedData } from "./types";
 import { DefaultSidebar } from "./components/Sidebar";
+import { toast, ToastContainer } from "react-toastify";
 
 function App() {
   const [state, setState] = useState<AppState>({
@@ -25,7 +26,6 @@ function App() {
     }));
 
     try {
-      await new Promise((res) => setTimeout(res, 1000));
       const response = await axios.get(
         `https://sixth-sense-assignment.onrender.com/get-trends`
       );
@@ -37,11 +37,12 @@ function App() {
       }));
       setTrigger((prev: number) => prev + 1);
     } catch (error) {
+      toast.error("Error scraping Trends , Please try again", {
+        theme: "dark",
+        autoClose: 1000,
+      });
       setState((prev) => ({
         ...prev,
-        error: axios.isAxiosError(error)
-          ? `Failed to fetch trends: ${error.message}`
-          : "An unexpected error occurred",
         isLoading: false,
       }));
     }
@@ -50,7 +51,7 @@ function App() {
   const handleSelectHistoryItem = (selectedData: any) => {
     setState((prev) => ({
       ...prev,
-      data: selectedData, // Set the selected historical data
+      data: selectedData,
       showAllTrends: false,
     }));
   };
@@ -64,7 +65,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-black text-white flex">
-      {/* Sidebar (fixed) */}
+      <ToastContainer />
       <div className="fixed left-0 top-0 h-screen w-64 bg-black border-r border-gray-800">
         <DefaultSidebar
           onSelectItem={handleSelectHistoryItem}
@@ -72,7 +73,7 @@ function App() {
         />
       </div>
 
-      {/* Main area (with left margin so it doesn’t overlap sidebar) */}
+      {/* Main area */}
       <div className="flex-1 ml-55 flex flex-col">
         {/* Header */}
         <div>
@@ -120,25 +121,6 @@ function App() {
             </div>
           )}
 
-          {/* Error State */}
-          {state.error && (
-            <div className="bg-red-900 border inline-block absolute left-[50%] transform -translate-x-1/2 border-red-700 rounded-xl p-3 animate-fadeIn">
-              <div className="flex items-center space-x-3">
-                <AlertCircle className="w-6 h-6 text-red-400" />
-                <div>
-                  <h3 className="text-red-400 font-semibold">Error</h3>
-                  <p className="text-red-300 mt-1">{state.error}</p>
-                </div>
-              </div>
-              <button
-                onClick={handleStartScraping}
-                className="mt-4 bg-red-800 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200"
-              >
-                Try Again
-              </button>
-            </div>
-          )}
-
           {/* Results */}
           {state.data && !state.isLoading && (
             <div className="animate-slideUp">
@@ -182,7 +164,7 @@ function App() {
           </div>
           <div className="flex space-x-2">
             <a
-              href="https://github.com/yourusername"
+              href="https://github.com/raffay69/sixth_sense_assignment"
               target="_blank"
               rel="noopener noreferrer"
               className="flex-1 flex items-center justify-center p-3 bg-gray-800/50 hover:bg-gray-700/70 rounded-xl transition-all duration-200 group border border-gray-700/30 hover:border-gray-600/50"
@@ -190,7 +172,7 @@ function App() {
               <Github className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors duration-200" />
             </a>
             <a
-              href="https://linkedin.com/in/yourprofile"
+              href="https://www.linkedin.com/in/mohammed-abdul-raffay-28a608308/"
               target="_blank"
               rel="noopener noreferrer"
               className="flex-1 flex items-center justify-center p-3 bg-gray-800/50 hover:bg-gray-700/70 rounded-xl transition-all duration-200 group border border-gray-700/30 hover:border-gray-600/50"
