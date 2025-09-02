@@ -91,7 +91,7 @@ Base URL (local): `http://localhost:4000`
 
 ---
 
-## PUBLIC HOSTED ENDPOINT
+## PUBLIC HOSTED BACKEND ENDPOINT
 
 https://sixth-sense-assignment.onrender.com
 

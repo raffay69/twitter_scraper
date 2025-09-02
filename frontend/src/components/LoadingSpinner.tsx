@@ -9,8 +9,13 @@ const LoadingSpinner: React.FC = () => {
         {/* Inner pulsing dot */}
         <div className="absolute top-1/2 left-1/2 w-2 h-2 bg-white rounded-full transform -translate-x-1/2 -translate-y-1/2 animate-pulse"></div>
       </div>
-      <div className="text-white text-lg font-medium animate-pulse">
-        Scraping trends...
+      <div className="flex flex-col items-center">
+        <div className="text-white text-lg font-medium animate-pulse">
+          Scraping trends...
+        </div>
+        <div className="text-gray-300 text-sm mt-1 animate-pulse">
+          This may take 1-2 mins
+        </div>
       </div>
     </div>
   );
