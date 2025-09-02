@@ -91,6 +91,10 @@ Base URL (local): `http://localhost:4000`
 
 ---
 
+## PUBLIC HOSTED ENDPOINT
+
+https://sixth-sense-assignment.onrender.com
+
 ## Approach
 
 - **Problem:** Logging in with rotating IPs caused Google Sign-In to trigger captchas (which cannot be automated). Normal account creation also failed due to X’s restrictions.
@@ -118,7 +122,6 @@ The workaround I found was to skip logging in each time and instead use **cookie
   - `X_EMAILADDRESS`
   - `X_PASSWORD`
   - `X_USERNAME` (sometimes required for login)
-- Public URL (hosted backend): `<enter_url>`
 
 ---
 
@@ -132,6 +135,5 @@ MongoDB is used to store:
  <img width="1621" height="615" alt="image" src="https://github.com/user-attachments/assets/7c68cd10-a0be-4bb8-bac9-bd54ed154229" />
  
 _<img width="1595" height="647" alt="image" src="https://github.com/user-attachments/assets/ea625ef8-652f-4bd2-b51a-cc30bf739883" />
-
 
 ---
