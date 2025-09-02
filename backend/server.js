@@ -1,11 +1,13 @@
 import express from "express";
 import { refreshCookie, scrapperADV } from "./scripts/script.js";
 import { cookieModel, trendsModel } from "./models/models.js";
+import cors from "cors";
 import "dotenv/config";
 
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
@@ -56,4 +58,13 @@ app.get("/refresh-cookies", async (req, res) => {
 
 app.get("/keep-alive", (req, res) => {
   res.send("alive");
+});
+
+app.get("/recents", async (req, res) => {
+  try {
+    const recents = await trendsModel.find().sort({ DateandTime: -1 });
+    res.status(200).json(recents);
+  } catch (e) {
+    res.sendStatus(500);
+  }
 });
