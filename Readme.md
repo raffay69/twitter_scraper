@@ -129,6 +129,9 @@ MongoDB is used to store:
 - **Cookies** (for session persistence)
 - **Trends** (scraped data)
 
-_(Insert MongoDB schema image here once available)_
+ <img width="1621" height="615" alt="image" src="https://github.com/user-attachments/assets/7c68cd10-a0be-4bb8-bac9-bd54ed154229" />
+ 
+_<img width="1595" height="647" alt="image" src="https://github.com/user-attachments/assets/ea625ef8-652f-4bd2-b51a-cc30bf739883" />
+
 
 ---
