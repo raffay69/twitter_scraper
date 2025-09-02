@@ -87,7 +87,7 @@ Base URL (local): `http://localhost:4000`
 - `GET /get-trends` → Fetch latest trends
 - `POST /refresh-cookies` → Refresh cookies (must be called manually via Postman initially)
 - `GET /recents` → Fetch recently saved trends
-- `DELETE /recents/:id` → Delete a particular record
+- `DELETE /recents?id=<id>` → Delete a particular record
 
 ---
 
