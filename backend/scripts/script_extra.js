@@ -1,6 +1,6 @@
 import "dotenv/config";
 
-// Original scrapper which wrote , works normally on my localnetwork
+// Original scrapper which i wrote , works normally on my localnetwork
 // But when i switch IP's , google throws in a captcha on the login screen which makes this apporach a failure
 // and apprently theres this bug in X which is not letting me create an Account , always says "OOPs an error occured , please try again"
 // Hence went with the cookie approach , still kept this function though

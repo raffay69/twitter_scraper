@@ -68,3 +68,14 @@ app.get("/recents", async (req, res) => {
     res.sendStatus(500);
   }
 });
+
+app.delete("/recent", async (req, res) => {
+  try {
+    const { id } = req.query;
+    const resp = await trendsModel.deleteOne({ _id: id });
+    console.log(resp);
+    res.sendStatus(200);
+  } catch (e) {
+    res.sendStatus(500);
+  }
+});
