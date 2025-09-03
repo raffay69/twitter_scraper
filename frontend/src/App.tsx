@@ -104,7 +104,7 @@ function App() {
                 </p>
                 <div className="mt-6 p-4 bg-gray-900 border border-gray-800 rounded-xl">
                   <p className="text-gray-400 text-sm">
-                    <span className="text-yellow-400">⚡</span> This service is
+                    <span className="text-yellow-400">⚡</span> The server is
                     hosted on Render and the server sleeps when idle. On the
                     first visit it may take{" "}
                     <span className="font-medium text-gray-300">
@@ -112,7 +112,7 @@ function App() {
                     </span>{" "}
                     to wake up.
                     <span className="text-yellow-400 font-medium">
-                      Refresh until recents appear
+                      Please wait until recents appear
                     </span>{" "}
                     — that means the server is ready.
                   </p>
