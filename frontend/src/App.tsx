@@ -167,7 +167,7 @@ function App() {
           </div>
           <div className="flex space-x-1.5">
             <a
-              href="https://github.com/raffay69/sixth_sense_assignment"
+              href="https://github.com/raffay69/twitter_scraper"
               target="_blank"
               rel="noopener noreferrer"
               className="flex-1 flex items-center justify-center p-1.5 bg-gray-800/50 hover:bg-gray-700/70 rounded-md transition-all duration-200 group border border-gray-700/30 hover:border-gray-600/50"
