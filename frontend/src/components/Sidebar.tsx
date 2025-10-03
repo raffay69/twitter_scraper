@@ -31,7 +31,7 @@ export const DefaultSidebar: React.FC<DefaultSidebarProps> = ({
   async function fetchRecents() {
     try {
       const res = await axios.get(
-        "https://sixth-sense-assignment.onrender.com/recents"
+        "https://twitter-scraper-n0kk.onrender.com/recents"
       );
       setData(res.data);
     } catch (e) {
@@ -50,7 +50,7 @@ export const DefaultSidebar: React.FC<DefaultSidebarProps> = ({
   async function handleDelete(id: string) {
     try {
       const res = await axios.delete(
-        `https://sixth-sense-assignment.onrender.com/recent?id=${id}`
+        `https://twitter-scraper-n0kk.onrender.com/recent?id=${id}`
       );
       if (res.status === 200)
         toast.success("Deleted successfully", {

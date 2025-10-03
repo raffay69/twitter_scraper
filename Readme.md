@@ -93,7 +93,7 @@ Base URL (local): `http://localhost:4000`
 
 ## PUBLIC HOSTED BACKEND ENDPOINT
 
-https://sixth-sense-assignment.onrender.com
+https://twitter-scraper-n0kk.onrender.com
 
 ## Approach
 

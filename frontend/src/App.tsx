@@ -27,7 +27,7 @@ function App() {
 
     try {
       const response = await axios.get(
-        `https://sixth-sense-assignment.onrender.com/get-trends`
+        `https://twitter-scraper-n0kk.onrender.com/get-trends`
       );
       const data: ScrapedData = response.data;
       setState((prev) => ({
